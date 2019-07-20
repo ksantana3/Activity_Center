@@ -1,0 +1,22 @@
+@model Activity
+<div class="btn-group pull-right">
+<a href="/home"><button class="btn btn-primary">Home</button></a>
+<a href="/logout"><button class="btn btn-primary">Logout</button></a>
+</div>
+
+<h1>Activity: @Model.Title</h1>
+<div class = "form-container-activity-show">
+    <p>Event Coordinator: @Model.Planner.FirstName</p>
+    <p>Description: @Model.Description</p>
+    <p>Starting Time: @Model.StartTime</p>
+
+    <p>Participants:</p>
+        <div class = "activity-list">
+        <ul>
+            @foreach (Join j in Model.AttendingUsers)
+            {
+                <li>@j.Joiner.FirstName</li>   
+            }
+        </ul>
+        </div>
+</div>

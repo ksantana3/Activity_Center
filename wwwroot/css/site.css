@@ -1,0 +1,100 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+  }
+body::after {
+    content: "";
+    background: url('/images/concert.jpg');
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    z-index: -1;   
+  }
+.span{
+    color: red;
+}
+.jumbotron {
+    width: 100%;
+    text-align: center;
+}
+.jumbotron, .well {
+    background-color: rgba(255, 255, 255, 0.4);
+    
+}
+.jumbotron h1{
+    color: #ff7b25;
+    font-size: 7em;
+    font-weight: 700;
+    display: inline-block;
+}
+
+/* .form-group{
+    background-color: rgba(255, 255, 255, 0.6);
+} */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    min-height: 270px;
+}
+.form-container-activity {
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    min-height: 390px;
+}
+.form-container-activity label{
+    font-size: 1.5em;
+}
+.form-container-activity-show{
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    min-height: 200px;
+}
+.activity-list{
+    list-style-position: inside;
+    text-align: left;
+}
+table {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+form {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

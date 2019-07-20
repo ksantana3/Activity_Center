@@ -1,0 +1,83 @@
+<div class="btn-group pull-right">
+<a href="/home"><button class="btn btn-primary">Home</button></a>
+<a href="/activity/new"><button class="btn btn-primary">Add Activity</button></a>
+<a href="/logout"><button class="btn btn-primary">Logout</button></a>
+</div>
+<br><br>
+
+<table class="table">
+    <tr>
+        <th>Activity</th>
+        <th>Start Date and Time</th>
+        <th>End Date and Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(Activity activity in ViewBag.Activities )
+    {
+        <tr>
+            <td>
+                <a href="/view/@activity.ActivityId">
+                    @activity.Title
+                </a>
+            </td>
+            <td>@activity.StartTime</td>
+            
+            @{
+                switch (@activity.Time)
+                {
+                    case 1:
+                        <td>@activity.StartTime.AddMinutes(@activity.Duration)</td>
+                        <td>@activity.Duration Minutes</td>
+                        break;
+                    case 2:
+                        <td>@activity.StartTime.AddMinutes(@activity.Duration*60)</td>
+                        <td>@activity.Duration Hours</td>
+                        break;
+                    case 3:
+                        <td>@activity.StartTime.AddMinutes(@activity.Duration*1440)</td>
+                        <td>@activity.Duration Days</td>
+                        break;
+                    default:
+                        <td>@activity.StartTime.AddMinutes(30)</td>
+                        <td>Case default</td>
+                        break;
+                }
+            }
+            <td>@activity.Planner.FirstName</td>
+            <td>@activity.AttendingUsers.Count</td>
+            <td>
+                @{
+                    if(@ViewBag.UserId == @activity.PlannerId)
+                    {
+                        <div class = "pull-right">
+                        <a href="/edit/@activity.ActivityId"><button class="btn btn-primary">Edit</button></a>
+                        <a href="/delete/@activity.ActivityId"><button class="btn btn-primary">Delete</button></a>
+                        </div>
+                    }
+                    else
+                    {
+                        bool joined = false;
+                        foreach(Join j in @activity.AttendingUsers)
+                        {
+                            if(j.UserId == @ViewBag.UserId)
+                            {
+                                joined = true;
+                            }
+                        }
+                        if(joined)
+                        {
+                            <a href="/leave/@activity.ActivityId"><button class="btn btn-primary pull-right">Leave</button></a>
+                        }
+                        else
+                        {
+                            <a href="/join/@activity.ActivityId"><button class="btn btn-primary pull-right">Join</button></a>
+                        } 
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
