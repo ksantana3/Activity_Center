@@ -263,3 +263,12 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
  
+# Local SQLite database created at runtime (mydb.db)
+*.db
+*.db-shm
+*.db-wal
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
